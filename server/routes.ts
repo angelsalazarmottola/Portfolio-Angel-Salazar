@@ -14,6 +14,21 @@ export async function registerRoutes(
     res.json(projects);
   });
 
+  app.get(api.badges.list.path, async (req, res) => {
+    const badges = await storage.getBadges();
+    res.json(badges);
+  });
+
+  app.get(api.certifications.list.path, async (req, res) => {
+    const certs = await storage.getCertifications();
+    res.json(certs);
+  });
+
+  app.get(api.experience.list.path, async (req, res) => {
+    const exp = await storage.getExperience();
+    res.json(exp);
+  });
+
   app.post(api.messages.create.path, async (req, res) => {
     try {
       const input = api.messages.create.input.parse(req.body);
@@ -30,38 +45,46 @@ export async function registerRoutes(
     }
   });
 
-  // Seed data on startup
-  const existingProjects = await storage.getProjects();
-  if (existingProjects.length === 0) {
-    await storage.createProject({
-      title: "Super Mario Clone",
-      description: "A classic platformer recreated in JS.",
-      imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80",
-      link: "#",
-      tags: ["Game Dev", "JS", "Canvas"]
-    });
-    await storage.createProject({
-      title: "Retro RPG Engine",
-      description: "Turn-based battle system inspired by Final Fantasy.",
-      imageUrl: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&q=80",
-      link: "#",
-      tags: ["RPG", "TypeScript", "React"]
-    });
-    await storage.createProject({
-      title: "Pixel Art Editor",
-      description: "Web-based tool for creating sprite assets.",
-      imageUrl: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80",
-      link: "#",
-      tags: ["Tool", "Graphics", "Canvas"]
-    });
-    await storage.createProject({
-      title: "Space Invaders 2.0",
-      description: "Modern twist on the classic arcade shooter.",
-      imageUrl: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?auto=format&fit=crop&q=80",
-      link: "#",
-      tags: ["Arcade", "Action", "Phaser"]
-    });
+  // Seed data
+  async function seed() {
+    const projects = await storage.getProjects();
+    if (projects.length === 0) {
+      await storage.createProject({
+        title: "Super Mario Clone",
+        description: "A classic platformer recreated in JS.",
+        imageUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f",
+        link: "#",
+        tags: ["Game Dev", "JS"]
+      });
+    }
+
+    const badges = await storage.getBadges();
+    if (badges.length === 0) {
+      await storage.createBadge({ name: "JavaScript Master", icon: "Code", description: "Completed 100+ JS challenges" });
+      await storage.createBadge({ name: "Bug Hunter", icon: "Bug", description: "Squashed 50+ bugs in production" });
+    }
+
+    const certs = await storage.getCertifications();
+    if (certs.length === 0) {
+      await storage.createCertification({
+        title: "AWS Certified Developer",
+        issuer: "Amazon Web Services",
+        date: "2023-01-01",
+        credentialUrl: "#"
+      });
+    }
+
+    const exp = await storage.getExperience();
+    if (exp.length === 0) {
+      await storage.createExperience({
+        role: "Senior Developer",
+        company: "Pixel Studios",
+        startDate: "2020-01-01",
+        description: "Led the development of a retro RPG engine."
+      });
+    }
   }
+  seed();
 
   return httpServer;
 }

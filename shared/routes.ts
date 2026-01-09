@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { insertProjectSchema, insertMessageSchema, projects, messages } from './schema';
+import { insertProjectSchema, insertMessageSchema, insertBadgeSchema, insertCertificationSchema, insertExperienceSchema, projects, messages, badges, certifications, experience } from './schema';
 
 export const errorSchemas = {
   validation: z.object({
@@ -18,6 +18,33 @@ export const api = {
       path: '/api/projects',
       responses: {
         200: z.array(z.custom<typeof projects.$inferSelect>()),
+      },
+    },
+  },
+  badges: {
+    list: {
+      method: 'GET' as const,
+      path: '/api/badges',
+      responses: {
+        200: z.array(z.custom<typeof badges.$inferSelect>()),
+      },
+    },
+  },
+  certifications: {
+    list: {
+      method: 'GET' as const,
+      path: '/api/certifications',
+      responses: {
+        200: z.array(z.custom<typeof certifications.$inferSelect>()),
+      },
+    },
+  },
+  experience: {
+    list: {
+      method: 'GET' as const,
+      path: '/api/experience',
+      responses: {
+        200: z.array(z.custom<typeof experience.$inferSelect>()),
       },
     },
   },
