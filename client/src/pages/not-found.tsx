@@ -1,21 +1,23 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle } from "lucide-react";
+import { Link } from "wouter";
+import { AlertTriangle } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md mx-4">
-        <CardContent className="pt-6">
-          <div className="flex mb-4 gap-2">
-            <AlertCircle className="h-8 w-8 text-red-500" />
-            <h1 className="text-2xl font-bold text-gray-900">404 Page Not Found</h1>
-          </div>
-
-          <p className="mt-4 text-sm text-gray-600">
-            Did you forget to add the page to the router?
-          </p>
-        </CardContent>
-      </Card>
+    <div className="min-h-screen w-full flex items-center justify-center bg-black">
+      <div className="text-center space-y-8 p-8 border-4 border-red-600 animate-pulse">
+        <AlertTriangle className="w-24 h-24 text-red-600 mx-auto" />
+        <h1 className="text-6xl font-['Press_Start_2P'] text-red-600">404</h1>
+        <div className="space-y-2">
+          <p className="font-['VT323'] text-3xl text-white">Glitch in the Matrix detected.</p>
+          <p className="font-['VT323'] text-2xl text-gray-400">The level you are looking for does not exist.</p>
+        </div>
+        
+        <Link href="/">
+          <button className="btn-retro btn-retro-primary mt-8">
+            RETURN TO TITLE SCREEN
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }
