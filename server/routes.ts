@@ -19,16 +19,6 @@ export async function registerRoutes(
     res.json(badges);
   });
 
-  app.get(api.certifications.list.path, async (req, res) => {
-    const certs = await storage.getCertifications();
-    res.json(certs);
-  });
-
-  app.get(api.experience.list.path, async (req, res) => {
-    const exp = await storage.getExperience();
-    res.json(exp);
-  });
-
   app.post(api.messages.create.path, async (req, res) => {
     try {
       const input = api.messages.create.input.parse(req.body);
@@ -58,30 +48,12 @@ export async function registerRoutes(
       });
     }
 
-    const badges = await storage.getBadges();
-    if (badges.length === 0) {
+    const currentBadges = await storage.getBadges();
+    if (currentBadges.length === 0) {
       await storage.createBadge({ name: "JavaScript Master", icon: "Code", description: "Completed 100+ JS challenges" });
       await storage.createBadge({ name: "Bug Hunter", icon: "Bug", description: "Squashed 50+ bugs in production" });
-    }
-
-    const certs = await storage.getCertifications();
-    if (certs.length === 0) {
-      await storage.createCertification({
-        title: "AWS Certified Developer",
-        issuer: "Amazon Web Services",
-        date: "2023-01-01",
-        credentialUrl: "#"
-      });
-    }
-
-    const exp = await storage.getExperience();
-    if (exp.length === 0) {
-      await storage.createExperience({
-        role: "Senior Developer",
-        company: "Pixel Studios",
-        startDate: "2020-01-01",
-        description: "Led the development of a retro RPG engine."
-      });
+      await storage.createBadge({ name: "Pixel Artist", icon: "Palette", description: "Created 10+ pixel assets" });
+      await storage.createBadge({ name: "Speedrunner", icon: "Zap", description: "Deployed 5 projects in a week" });
     }
   }
   seed();
