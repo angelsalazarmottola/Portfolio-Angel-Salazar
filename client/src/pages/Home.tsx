@@ -22,7 +22,7 @@ export default function Home() {
           className="mb-12"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl text-transparent bg-clip-text bg-gradient-to-b from-green-400 to-green-700 drop-shadow-[4px_4px_0_rgba(255,255,255,0.2)] mb-4">
-            DEV_PORTFOLIO
+            ANGEL SALAZAR
           </h1>
           <p className="text-pink-500 font-['Press_Start_2P'] text-xs md:text-sm tracking-widest animate-pulse">
             PRESS START TO BEGIN
@@ -41,7 +41,7 @@ export default function Home() {
                   500,
                   'System ready.',
                   500,
-                  'Hello World! I am a Creative Developer building pixel-perfect experiences for the web.',
+                  'Hello World! I am a Cloud Solutions Architect & Dev. Designing scalable cloud infrastructures and high-performance digital ecosystems.',
                   1000
                 ]}
                 wrapper="span"

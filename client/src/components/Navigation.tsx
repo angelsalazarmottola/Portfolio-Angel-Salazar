@@ -1,13 +1,14 @@
 import { Link, useLocation } from "wouter";
-import { Gamepad2, User, Code, Mail } from "lucide-react";
+import { Gamepad2, User, Code, Mail, Trophy } from "lucide-react";
 
 export function Navigation() {
   const [location] = useLocation();
 
   const links = [
     { href: "/", label: "START", icon: Gamepad2 },
-    { href: "/projects", label: "LEVELS", icon: Code },
     { href: "/about", label: "PLAYER", icon: User },
+    { href: "/certifications", label: "CERTIFICATIONS", icon: Trophy },
+    { href: "/projects", label: "PROJECTS", icon: Code },
     { href: "/contact", label: "CONTACT", icon: Mail },
   ];
 

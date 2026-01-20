@@ -6,14 +6,24 @@
 
 :root {
   /* Retro Neon Palette */
-  --background: 260 20% 10%;   /* Deep dark purple/black */
-  --foreground: 120 100% 50%;  /* Retro Terminal Green */
+  /* --background: 260 20% 10%;   Deep dark purple/black */
+  /* --foreground: 120 100% 50%;  Retro Terminal Green */
+
+  --background: 0 0% 5%;           /* Negro puro */
+  --foreground: 184 100% 50%;      /* Texto principal en Turquesa */
   
-  --primary: 320 100% 50%;     /* Neon Pink */
-  --primary-foreground: 0 0% 100%;
+  /* --primary: 320 100% 50%;     Neon Pink */
+  /* --primary-foreground: 0 0% 100%; */
   
+  /* Primario: Azul Turquesa (Reemplaza el Neon Pink) */
+  --primary: 184 100% 50%;
+  --primary-foreground: 0 0% 0%; /* Texto negro sobre fondo turquesa */
   --secondary: 180 100% 50%;   /* Cyan */
   --secondary-foreground: 260 20% 10%;
+
+  /* Detalles en Cian */
+  --secondary: 188 100% 40%;
+  --secondary-foreground: 0 0% 100%;
   
   --accent: 45 100% 50%;       /* Gold/Yellow for coins/stars */
   --accent-foreground: 260 20% 10%;
@@ -24,9 +34,13 @@
   --muted: 260 20% 20%;
   --muted-foreground: 260 10% 60%;
   
-  --border: 120 100% 50%;      /* Green borders default */
-  --input: 260 20% 20%;
-  --ring: 320 100% 50%;
+  /* --border: 120 100% 50%;      Green borders default */
+  /* --input: 260 20% 20%; */
+  /* --ring: 320 100% 50%; */
+
+  /* Bordes de Terminal Turquesa */
+  --border: 184 100% 40%;
+  --ring: 184 100% 50%;
   
   --radius: 0px; /* No rounded corners in 8-bit! */
 }

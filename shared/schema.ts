@@ -27,6 +27,24 @@ export const badges = pgTable("badges", {
   description: text("description"),
 });
 
+export const certifications = pgTable("certifications", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  imageUrl: text("image_url").notNull(),
+  link: text("link"), // Aquí irá tu Credly o certificado de Fortinet
+  tags: text("tags").array().notNull(), // Para filtrar por ["AWS", "Security", "Infrastructure"]
+});
+
+// Esquema de inserción (para validar datos antes de que entren a la DB)
+export const insertCertificationSchema = createInsertSchema(certifications).omit({ 
+  id: true 
+});
+
+// Tipos para TypeScript
+export type Certification = typeof certifications.$inferSelect;
+export type InsertCertification = z.infer<typeof insertCertificationSchema>;
+
 export const insertProjectSchema = createInsertSchema(projects).omit({ id: true, createdAt: true });
 export const insertMessageSchema = createInsertSchema(messages).omit({ id: true, createdAt: true });
 export const insertBadgeSchema = createInsertSchema(badges).omit({ id: true });

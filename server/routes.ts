@@ -19,6 +19,11 @@ export async function registerRoutes(
     res.json(badges);
   });
 
+  app.get(api.certifications.list.path, async (req, res) => {
+    const allCerts = await storage.getCertifications(); // Crearemos esta función en el siguiente paso
+    res.json(allCerts);
+  });
+
   app.post(api.messages.create.path, async (req, res) => {
     try {
       const input = api.messages.create.input.parse(req.body);
@@ -55,6 +60,18 @@ export async function registerRoutes(
       await storage.createBadge({ name: "Pixel Artist", icon: "Palette", description: "Created 10+ pixel assets" });
       await storage.createBadge({ name: "Speedrunner", icon: "Zap", description: "Deployed 5 projects in a week" });
     }
+
+    const currentCertifications = await storage.getCertifications();
+    if (currentCertifications.length === 0) {
+      await storage.createCertification({
+        title: "AWS Certified Solutions Architect",
+        description: "Demonstrates expertise in designing distributed applications and systems on the AWS platform.",
+        imageUrl: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+        link: "https://www.credly.com/badges/aws-certified-solutions-architect",
+        tags: ["AWS", "Cloud", "Architecture"]
+      });
+    }
+    
   }
   seed();
 

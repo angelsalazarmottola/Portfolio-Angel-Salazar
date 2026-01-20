@@ -1,10 +1,10 @@
-import { useProjects } from "@/hooks/use-projects";
+import { useCertifications } from "@/hooks/use-certifications";
 import { RetroCard } from "@/components/RetroCard";
 import { motion } from "framer-motion";
 import { Loader2, ExternalLink, Trophy } from "lucide-react";
 
-export default function Projects() {
-  const { data: projects, isLoading, error } = useProjects();
+export default function Certifications() {
+  const { data: certs, isLoading, error } = useCertifications();
 
   if (isLoading) {
     return (
@@ -30,16 +30,16 @@ export default function Projects() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-16"
       >
-        <h1 className="text-3xl md:text-5xl text-yellow-400 drop-shadow-[4px_4px_0_#b45309] mb-4">
-          SELECT PROJECT
+        <h1 className="text-3xl md:text-4xl text-yellow-400 drop-shadow-[4px_4px_0_#b45309] mb-4">
+          CERTIFICATIONS AND BADGES
         </h1>
         <div className="h-1 w-32 bg-yellow-400 mx-auto" />
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-        {projects?.map((project, index) => (
+        {certs?.map((cert, index) => (
           <motion.div
-            key={project.id}
+            key={cert.id}
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.1 }}
@@ -53,7 +53,7 @@ export default function Projects() {
                 <div className="absolute top-2 right-2 bg-black/80 px-2 py-1 z-10 border border-white/50">
                   <span className="text-yellow-400 font-['Press_Start_2P'] text-[10px] flex items-center gap-1">
                     <Trophy className="w-3 h-3" />
-                    LVL {index + 1}
+                    CERT {index + 1}
                   </span>
                 </div>
                 
@@ -61,9 +61,9 @@ export default function Projects() {
                 <div className="w-full h-full bg-slate-900 flex items-center justify-center text-gray-600 font-['VT323'] text-2xl">
                   {/* In a real app, use project.imageUrl here */}
                   <img 
-                    src={project.imageUrl || `https://source.unsplash.com/random/800x600?tech,code,${index}`} 
-                    alt={project.title}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity pixelated"
+                    src={cert.imageUrl || `https://source.unsplash.com/random/800x600?tech,code,${index}`} 
+                    alt={cert.title}
+                    className="w-full h-full object-contain p-4 opacity-80 group-hover:opacity-100 transition-opacity pixelated"
                     style={{ imageRendering: 'pixelated' }}
                   />
                   {/* Decorative Scanline */}
@@ -72,11 +72,11 @@ export default function Projects() {
               </div>
 
               <h3 className="text-xl md:text-2xl text-white mb-2 font-['Press_Start_2P'] leading-tight group-hover:text-green-400 transition-colors">
-                {project.title}
+                {cert.title}
               </h3>
 
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags?.map((tag) => (
+                {cert.tags?.map((tag) => (
                   <span key={tag} className="bg-white/10 text-xs px-2 py-1 font-['VT323'] text-blue-300 border border-blue-900">
                     #{tag}
                   </span>
@@ -84,18 +84,18 @@ export default function Projects() {
               </div>
 
               <p className="text-gray-300 font-['VT323'] text-lg md:text-xl mb-6 flex-grow border-t border-white/10 pt-4">
-                {project.description}
+                {cert.description}
               </p>
 
-              {project.link && (
+              {cert.link && (
                 <a 
-                  href={project.link}
+                  href={cert.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-auto"
                 >
                   <button className="w-full py-3 bg-white/5 border-2 border-white/20 hover:bg-white/10 hover:border-green-400 text-green-400 font-['Press_Start_2P'] text-xs flex items-center justify-center gap-2 transition-all">
-                    START GAME <ExternalLink className="w-4 h-4" />
+                    VIEW CERTIFICATE <ExternalLink className="w-4 h-4" />
                   </button>
                 </a>
               )}

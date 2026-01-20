@@ -32,21 +32,21 @@ export default function Contact() {
         className="w-full max-w-2xl"
       >
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-5xl text-pink-500 drop-shadow-[4px_4px_0_#831843] mb-4 animate-pulse">
+          <h1 className="text-3xl md:text-5xl text-green-500 drop-shadow-[4px_4px_0_#831843] mb-4 animate-pulse">
             NEW CHALLENGER!
           </h1>
           <p className="font-['VT323'] text-2xl text-white">Enter your details to start the game.</p>
         </div>
 
-        <RetroCard variant="secondary" className="border-pink-500 shadow-pink-500/50">
+        <RetroCard variant="secondary" className="border-green-500 shadow-green-500/50">
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <div className="space-y-2">
-              <label className="font-['Press_Start_2P'] text-xs text-pink-400 block uppercase">
+              <label className="font-['Press_Start_2P'] text-xs text-green-400 block uppercase">
                 Player Name
               </label>
               <input
                 {...form.register("name")}
-                className="w-full bg-black border-2 border-pink-700 p-4 text-white font-['VT323'] text-xl focus:outline-none focus:border-pink-400 focus:shadow-[0_0_10px_rgba(236,72,153,0.5)] transition-all"
+                className="w-full bg-black border-2 border-green-700 p-4 text-white font-['VT323'] text-xl focus:outline-none focus:border-green-400 focus:shadow-[0_0_10px_rgba(236,72,153,0.5)] transition-all"
                 placeholder="ENTER NAME"
               />
               {form.formState.errors.name && (
@@ -55,12 +55,12 @@ export default function Contact() {
             </div>
 
             <div className="space-y-2">
-              <label className="font-['Press_Start_2P'] text-xs text-pink-400 block uppercase">
+              <label className="font-['Press_Start_2P'] text-xs text-green-400 block uppercase">
                 Email Address
               </label>
               <input
                 {...form.register("email")}
-                className="w-full bg-black border-2 border-pink-700 p-4 text-white font-['VT323'] text-xl focus:outline-none focus:border-pink-400 focus:shadow-[0_0_10px_rgba(236,72,153,0.5)] transition-all"
+                className="w-full bg-black border-2 border-green-700 p-4 text-white font-['VT323'] text-xl focus:outline-none focus:border-green-400 focus:shadow-[0_0_10px_rgba(236,72,153,0.5)] transition-all"
                 placeholder="ENTER EMAIL"
               />
               {form.formState.errors.email && (
@@ -69,13 +69,13 @@ export default function Contact() {
             </div>
 
             <div className="space-y-2">
-              <label className="font-['Press_Start_2P'] text-xs text-pink-400 block uppercase">
+              <label className="font-['Press_Start_2P'] text-xs text-green-400 block uppercase">
                 Mission Brief
               </label>
               <textarea
                 {...form.register("message")}
                 rows={5}
-                className="w-full bg-black border-2 border-pink-700 p-4 text-white font-['VT323'] text-xl focus:outline-none focus:border-pink-400 focus:shadow-[0_0_10px_rgba(236,72,153,0.5)] transition-all resize-none"
+                className="w-full bg-black border-2 border-green-700 p-4 text-white font-['VT323'] text-xl focus:outline-none focus:border-green-400 focus:shadow-[0_0_10px_rgba(236,72,153,0.5)] transition-all resize-none"
                 placeholder="ENTER MESSAGE..."
               />
               {form.formState.errors.message && (
@@ -92,7 +92,7 @@ export default function Contact() {
                 flex items-center justify-center gap-3 transition-all
                 ${isPending 
                   ? 'bg-gray-700 text-gray-400 cursor-not-allowed' 
-                  : 'bg-pink-600 text-white hover:bg-pink-500 hover:translate-y-[-2px] hover:shadow-[6px_6px_0_0_rgba(255,255,255,0.3)] active:translate-y-0 active:shadow-[2px_2px_0_0_rgba(255,255,255,0.2)]'
+                  : 'bg-green-600 text-white hover:bg-green-500 hover:translate-y-[-2px] hover:shadow-[6px_6px_0_0_rgba(255,255,255,0.3)] active:translate-y-0 active:shadow-[2px_2px_0_0_rgba(255,255,255,0.2)]'
                 }
               `}
             >

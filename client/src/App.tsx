@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Navigation } from "@/components/Navigation";
 
 import Home from "@/pages/Home";
+import Certifications from "@/pages/Certifications";
 import Projects from "@/pages/Projects";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
@@ -14,6 +15,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/certifications" component={Certifications} />
       <Route path="/projects" component={Projects} />
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
