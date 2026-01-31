@@ -26,3 +26,9 @@ Este repositorio contiene mi portafolio profesional, desarrollado con un enfoque
 > * **Resolución de Networking Docker**: Configuración del host de escucha en `0.0.0.0` y mapeo de puertos `8080:8080`. Se resolvió el error de "Empty Response" asegurando que el tráfico del host local pueda cruzar el aislamiento del contenedor.
 > * **Estrategia de Migración (Dump & Restore)**: Implementación de un proceso de extracción de datos mediante `pg_dump` y re-formateo a comandos `INSERT` para garantizar compatibilidad con motores gestionados.
 > * **Integridad de Secuencias**: Sincronización manual de contadores de ID (`setval`) tras la inyección de datos, asegurando que las nuevas inserciones (mensajes de contacto) no generen conflictos de clave primaria.
+
+> **Fase 4: Gobernanza de Identidad y Configuración de AWS CLI**
+> * **Gestión de Accesos (IAM)**: Creación del usuario programático portfolio-deployer bajo el principio de privilegio mínimo. Se asignaron políticas específicas para Amazon ECR (gestión de imágenes) y AWS App Runner (orquestación del servicio), garantizando un entorno de despliegue seguro y controlado.
+> * **Políticas de Seguridad**: Generación de llaves de acceso (Access Keys) para la interfaz de línea de comandos, permitiendo una comunicación cifrada entre el entorno de desarrollo local y el plano de control de AWS.
+> * **Configuración del CLI**: Vinculación de la terminal local con el proveedor de nube mediante aws configure. Se estandarizó la región us-east-1 (N. Virginia) para mantener la consistencia geográfica con la base de datos Neon y minimizar la latencia de red en la arquitectura final.
+> * **Validación STS**: Verificación de la conexión segura con AWS STS (Security Token Service) para confirmar la identidad del "deployer" antes del push de imágenes.
