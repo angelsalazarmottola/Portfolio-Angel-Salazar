@@ -32,3 +32,32 @@ Este repositorio contiene mi portafolio profesional, desarrollado con un enfoque
 > * **Políticas de Seguridad**: Generación de llaves de acceso (Access Keys) para la interfaz de línea de comandos, permitiendo una comunicación cifrada entre el entorno de desarrollo local y el plano de control de AWS.
 > * **Configuración del CLI**: Vinculación de la terminal local con el proveedor de nube mediante aws configure. Se estandarizó la región us-east-1 (N. Virginia) para mantener la consistencia geográfica con la base de datos Neon y minimizar la latencia de red en la arquitectura final.
 > * **Validación STS**: Verificación de la conexión segura con AWS STS (Security Token Service) para confirmar la identidad del "deployer" antes del push de imágenes.
+
+> **Fase 5: Migración a AWS ECR**
+> * **Aprovisionamiento de Registro**: Creación del repositorio privado portfolio-repo en la región us-east-1 mediante AWS CLI.
+> * **Autenticación de Capa de Contenedores**: Implementación de get-login-password para establecer un canal seguro entre el daemon de Docker local y el registro de Amazon.
+> * **Publicación de Imagen**: Ejecución del docker push, transfiriendo la arquitectura multi-stage optimizada (basada en node:20-slim) hacia la infraestructura de AWS.
+
+**Fase 6: Orquestación y Despliegue Continuo**
+> * **Aprovisionamiento en App Runner**: Configuración de un servicio serverless gestionado para la exposición pública del portafolio.
+> * **Pipeline de Entrega (CD)**: Activación de Automatic Deployment, vinculando el repositorio de ECR con el entorno de ejecución para actualizaciones en tiempo real.
+> * **Inyección de Secretos en Cloud**: Configuración de variables de entorno seguras en el plano de control de AWS, permitiendo la conectividad persistente con el clúster de Neon.
+> * **Networking de Producción**: Mapeo del puerto de escucha 8080 y generación automática de certificado SSL/TLS para navegación segura (HTTPS).
+
+**Fase 7: Inyección de Secretos y Conectividad DB**
+> * **Externalización de Configuración**: Implementación de variables de entorno en el plano de control de App Runner, siguiendo el factor "Config" de las 12-Factor Apps.
+> * **Cifrado en Tránsito**: Configuración de la DATABASE_URL con parámetros sslmode=require, garantizando que la comunicación entre AWS y Neon sea 100% segura.
+> * **Desacoplamiento de Entornos**: Se mantiene la integridad del código fuente al no "hardcodear" credenciales, permitiendo que la misma imagen Docker sea agnóstica al entorno de ejecución.
+
+**Fase 8: Eficiencia de Almacenamiento y Costos - Route 53**
+> * **Optimización de Artefactos**: Logro de una imagen final de producción de 163.75 MB mediante arquitectura multi-stage, garantizando el cumplimiento de la capa gratuita de AWS ECR (umbral de 500 MB).
+> * **Proyección Financiera**: Costo operativo de almacenamiento de $0.00 USD/mes, optimizando el TCO (Total Cost of Ownership) de la infraestructura cloud.
+> * **Rendimiento de Despliegue**: Reducción de la latencia en el ciclo de vida del despliegue (Image Pull), facilitando procesos de Continuous Deployment más ágiles.
+> * **Gestión de Identidad Digital**: Registro del dominio angel-salazar.com en Route 53 y vinculación mediante registros de tipo ALIAS, garantizando una resolución de nombres nativa y eficiente.
+
+**Fase 9: Automatización CI/CD con GitHub Actions**
+> * **Pipeline de Entrega Continua**: Implementación de un workflow automatizado que integra autenticación en AWS, construcción de imagen y push a ECR en cada commit.
+> * **Seguridad de Pipeline**: Uso de GitHub Actions Secrets para la gestión cifrada de las Access Keys de AWS.
+> * **Rendimiento de Despliegue**: Reducción de la latencia en el ciclo de vida del despliegue (Image Pull), facilitando procesos de Continuous Deployment más ágiles.
+
+[![Architecture](https://img.shields.io/badge/Architecture-AWS_Serverless-orange)](https://aws.amazon.com/)
