@@ -20,7 +20,7 @@ COPY --from=build /app/package*.json ./
 COPY --from=build /app/node_modules ./node_modules
 
 # Exponemos el puerto que usará App Runner
-EXPOSE 5000
+EXPOSE 8080
 
 # Comando para iniciar la aplicación
 CMD ["npm", "run", "start"]
