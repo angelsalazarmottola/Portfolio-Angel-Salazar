@@ -188,7 +188,7 @@ export default function About() {
 
               {/* Botón de GITHUB */}
               <a 
-                href="https://github.com/angelsalazarmottola" 
+                href="https://github.com/angelsalazarmottola?tab=repositories" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-black border-2 border-primary p-4 text-center hover:bg-primary/20 transition-all cursor-pointer block"

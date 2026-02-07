@@ -9,7 +9,7 @@ export function Navigation() {
     { href: "/about", label: "PLAYER", icon: User },
     { href: "/certifications", label: "CERTIFICATIONS", icon: Trophy },
     { href: "/projects", label: "PROJECTS", icon: Code },
-    { href: "/contact", label: "CONTACT", icon: Mail },
+    // { href: "/contact", label: "CONTACT", icon: Mail },
   ];
 
   return (
