@@ -30,7 +30,7 @@ export default function Certifications() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center mb-16"
       >
-        <h1 className="text-2xl md:text-4xl text-yellow-400 drop-shadow-[4px_4px_0_#b45309] mb-4">
+        <h1 className="text-[16px] xs:text-[20px] sm:text-2xl md:text-4xl text-yellow-400 drop-shadow-[4px_4px_0_#b45309] mb-4">
           CERTIFICATIONS AND BADGES
         </h1>
         <div className="h-1 w-32 bg-yellow-400 mx-auto" />
